@@ -1,4 +1,5 @@
-import { Image, Link, Price, StoreLogo, useStorefront, type ProductCard } from '@dripfunnel/storefront-core/theme'
+import { Image, Link, Price, useStorefront, type ProductCard } from '@dripfunnel/storefront-core/theme'
+import { NoPhoto } from './NoPhoto'
 import styles from '../styles/landing.module.css'
 
 /**
@@ -10,10 +11,7 @@ export const ShopCard = ({ product, label }: { product: ProductCard; label?: str
   return (
     <article className={styles.card}>
       <Link href={product.href} className={styles.cardPicture}>
-        <span className={styles.pictureMark} aria-hidden="true">
-          <StoreLogo className={styles.markLogo} />
-        </span>
-        {product.photo ? <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 358px, 50vw" className={styles.cardImage} /> : <span className={styles.hidden}>{t('shop.card.noPicture')}</span>}
+        {product.photo ? <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 358px, 50vw" className={styles.cardImage} /> : <NoPhoto label={t('shop.card.noPicture')} />}
         {product.badges[0] ? <span className={styles.cardBadge}>{product.badges[0].label}</span> : null}
       </Link>
       <div className={styles.cardBody}>

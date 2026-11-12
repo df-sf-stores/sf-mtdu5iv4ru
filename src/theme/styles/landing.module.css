@@ -27,23 +27,6 @@
 }
 
 /* The logo that waits behind every photo frame, so a missing or failed photo still shows the brand. */
-.pictureMark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--cream);
-}
-
-.markLogo {
-  display: block;
-  width: 34%;
-  height: auto;
-  max-height: 36%;
-  object-fit: contain;
-  opacity: 0.8;
-}
 
 .buttonIcon {
   width: 16px;

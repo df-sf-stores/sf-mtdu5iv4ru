@@ -1,0 +1,49 @@
+/* NoPhoto: a picture frame with no photo in the store. Tokens come from the .shell in layout.module.css. */
+
+.frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #faf9f7;
+}
+
+.box {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.category {
+  width: 40%;
+  max-width: 96px;
+  height: auto;
+}
+
+.label {
+  overflow-wrap: anywhere;
+}

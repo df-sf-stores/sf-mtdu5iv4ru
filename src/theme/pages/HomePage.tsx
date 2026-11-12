@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { Image, Link, StoreLogo, useCollections, useListing, useProducts, useStorefront, type CollectionCard, type ProductCard } from '@dripfunnel/storefront-core/theme'
 import { ArrowRight, HeroSlide, IntroSlide } from '../components/HeroSlide'
+import { NoPhoto } from '../components/NoPhoto'
+import { iconFor } from '../components/CategoryIcon'
 import { FaqAccordion } from '../components/interactive/FaqAccordion'
 import { HeroCarousel } from '../components/interactive/HeroCarousel'
 import { ProductShowcase } from '../components/interactive/ProductShowcase'
@@ -60,10 +62,7 @@ const CategoryCard = ({ collection, count }: { collection: CollectionCard; count
     <li>
       <Link href={collection.href} className={styles.category}>
         <span className={styles.categoryPicture}>
-          <span className={styles.pictureMark} aria-hidden="true">
-            <StoreLogo className={styles.markLogo} />
-          </span>
-          {picture ? <Image image={picture} alt="" ratio={0.8} sizes="(min-width: 1024px) 234px, 45vw" className={styles.fill} /> : null}
+          {picture ? <Image image={picture} alt="" ratio={0.8} sizes="(min-width: 1024px) 234px, 45vw" className={styles.fill} /> : <NoPhoto kind={iconFor(collection.name)} />}
         </span>
         <span className={styles.categoryHead}>
           <span className={styles.categoryName}>{collection.name}</span>
@@ -93,10 +92,7 @@ const PromoCard = ({ collection, count, tone }: { collection: CollectionCard; co
         </Link>
       </div>
       <div className={styles.promoPicture}>
-        <span className={styles.pictureMark} aria-hidden="true">
-          <StoreLogo className={styles.markLogo} />
-        </span>
-        {picture ? <Image image={picture} alt="" ratio={0.9} sizes="(min-width: 1024px) 370px, 90vw" className={styles.fill} /> : null}
+        {picture ? <Image image={picture} alt="" ratio={0.9} sizes="(min-width: 1024px) 370px, 90vw" className={styles.fill} /> : <NoPhoto kind={iconFor(collection.name)} />}
       </div>
     </article>
   )
@@ -306,10 +302,7 @@ export const HomePage = () => {
         <div className={cx(styles.wrap, styles.storyGrid)}>
           <div className={styles.storyMedia}>
             <div className={styles.storyPicture}>
-              <span className={styles.pictureMark} aria-hidden="true">
-                <StoreLogo className={styles.markLogo} />
-              </span>
-              {storyProduct?.photo ? <Image image={storyProduct.photo} alt={storyProduct.photo.alt ?? storyProduct.name} ratio={0.8} sizes="(min-width: 1024px) 330px, 80vw" className={styles.fill} /> : null}
+              {storyProduct?.photo ? <Image image={storyProduct.photo} alt={storyProduct.photo.alt ?? storyProduct.name} ratio={0.8} sizes="(min-width: 1024px) 330px, 80vw" className={styles.fill} /> : <NoPhoto />}
             </div>
             <div className={styles.storyBadge}>
               <StoreLogo className={styles.storyLogo} />

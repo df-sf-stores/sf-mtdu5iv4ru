@@ -129,24 +129,6 @@
 
 /* Photo frames: the store's logo waits behind each photo. */
 
-.mark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--cream);
-}
-
-.markLogo {
-  display: block;
-  width: 36%;
-  height: auto;
-  max-height: 36%;
-  object-fit: contain;
-  opacity: 0.8;
-}
-
 .photo {
   position: absolute;
   inset: 0;

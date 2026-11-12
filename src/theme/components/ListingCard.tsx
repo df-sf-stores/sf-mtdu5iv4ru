@@ -1,4 +1,5 @@
 import { Image, Link, Price, useStorefront, type ProductCard } from '@dripfunnel/storefront-core/theme'
+import { NoPhoto } from './NoPhoto'
 import styles from '../styles/listing.module.css'
 
 const Arrow = () => (
@@ -19,14 +20,7 @@ export const ListingCard = ({ product }: { product: ProductCard }) => {
         {product.photo ? (
           <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={1} sizes="(min-width: 1280px) 240px, (min-width: 768px) 30vw, 45vw" className={styles.image} />
         ) : (
-          <span className={styles.noPicture}>
-            <svg className={styles.noPictureIcon} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <rect x="3.5" y="5" width="17" height="14" rx="2" />
-              <circle cx="9" cy="10" r="1.6" />
-              <path d="M4 17l5-4.5 3.5 3 3-2.5 4.5 4" />
-            </svg>
-            {t('shop.card.noPicture')}
-          </span>
+          <NoPhoto label={t('shop.card.noPicture')} />
         )}
         {product.badges[0] ? <span className={styles.badge}>{product.badges[0].label}</span> : null}
       </Link>

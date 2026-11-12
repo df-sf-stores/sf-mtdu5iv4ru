@@ -26,6 +26,8 @@
 }
 
 .noPicture {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   background: var(--picture-alt);
