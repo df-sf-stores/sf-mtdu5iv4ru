@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 import { Image, Link, StoreLogo, useListing, useStorefront, type CollectionCard, type ProductCard } from '@dripfunnel/storefront-core/theme'
+import { iconFor, type IconKind } from './CategoryIcon'
+import { NoPhoto } from './NoPhoto'
 import { slugOf } from './slugOf'
 import styles from '../styles/hero.module.css'
 
@@ -10,34 +12,33 @@ export const ArrowRight = ({ className }: { className?: string }) => (
 )
 
 /**
- * A product's photo in a hero frame. The store's logo waits behind it, so a frame never stands empty: not while the
- * photo loads, not when a product has none, and not when its file can't be fetched.
+ * A product's photo in a hero frame, or the shared no-photo panel when the store has none for it: with the
+ * collection's icon on a collection's slide, so the frame still says what the slide is about.
  */
-const Pack = ({ product, large }: { product: ProductCard | undefined; large: boolean }) => (
+const Pack = ({ product, large, kind }: { product: ProductCard | undefined; large: boolean; kind: IconKind | undefined }) => (
   <>
-    <span className={styles.packMark} aria-hidden="true">
-      <StoreLogo className={styles.packLogo} />
-    </span>
     {product?.photo ? (
       large ? (
         <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 452px, 80vw" className={styles.photo} />
       ) : (
         <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 228px, 40vw" className={styles.photo} />
       )
-    ) : null}
+    ) : (
+      <NoPhoto kind={kind} />
+    )}
   </>
 )
 
 /** Two products in overlapping white frames, with the store's badge pinned to the large one. */
-const Media = ({ main, side }: { main: ProductCard | undefined; side: ProductCard | undefined }) => {
+const Media = ({ main, side, kind }: { main: ProductCard | undefined; side: ProductCard | undefined; kind?: IconKind | undefined }) => {
   const { t } = useStorefront()
   return (
     <div className={styles.media}>
       <div className={styles.frameMain}>
-        <Pack product={main} large />
+        <Pack product={main} large kind={kind} />
       </div>
       <div className={styles.frameSide}>
-        <Pack product={side} large={false} />
+        <Pack product={side} large={false} kind={kind} />
       </div>
       <span className={styles.badge}>
         <StoreLogo className={styles.badgeLogo} />
@@ -116,7 +117,7 @@ export const HeroSlide = ({ collection }: { collection: CollectionCard }) => {
           {t('home.hero.explore')}
         </Link>
       </Copy>
-      <Media main={main} side={side} />
+      <Media main={main} side={side} kind={iconFor(collection.name)} />
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { Image, Link, StoreLogo, useProducts, useStorefront, type ProductCard } 
 import { CategoryIcon, iconFor } from './CategoryIcon'
 import { ArrowRight } from './HeroSlide'
 import { cx } from './cx'
+import { NoPhoto } from './NoPhoto'
 import styles from '../styles/company.module.css'
 
 /**
@@ -28,19 +29,18 @@ export const Eyebrow = ({ children, centered = false, light = false }: { childre
   <p className={cx(styles.eyebrow, centered && styles.eyebrowCentered, light && styles.eyebrowLight)}>{children}</p>
 )
 
-/** A product's photo in a frame, the store's logo waiting behind it. */
+/** A product's photo in a frame, or the shared no-photo panel when the store has none for it. */
 export const Framed = ({ product, className, large }: { product: ProductCard | undefined; className: string | undefined; large: boolean }) => (
   <div className={className}>
-    <span className={styles.mark} aria-hidden="true">
-      <StoreLogo className={styles.markLogo} />
-    </span>
     {product?.photo ? (
       large ? (
         <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 330px, 70vw" className={styles.photo} />
       ) : (
         <Image image={product.photo} alt={product.photo.alt ?? product.name} ratio={0.8} sizes="(min-width: 1024px) 200px, 45vw" className={styles.photo} />
       )
-    ) : null}
+    ) : (
+      <NoPhoto />
+    )}
   </div>
 )
 

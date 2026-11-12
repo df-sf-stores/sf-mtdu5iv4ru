@@ -223,7 +223,8 @@
   height: 100%;
   color: transparent;
   font-size: 0;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .badge {

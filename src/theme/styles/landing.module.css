@@ -23,7 +23,8 @@
   height: 100%;
   color: transparent;
   font-size: 0;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* The logo that waits behind every photo frame, so a missing or failed photo still shows the brand. */
@@ -534,7 +535,8 @@
   height: 100%;
   color: transparent;
   font-size: 0;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.5s ease;
 }
 

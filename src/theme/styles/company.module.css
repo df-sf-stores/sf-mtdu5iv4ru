@@ -137,7 +137,8 @@
   height: 100%;
   color: transparent;
   font-size: 0;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Browsers draw ::before only on an image that failed to load: it covers the small broken-image mark in the corner. */

@@ -40,7 +40,8 @@
   width: 88px;
   height: 110px;
   border-radius: calc(var(--radius) - 4px);
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .noPhoto {
