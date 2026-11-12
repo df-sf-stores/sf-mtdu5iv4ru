@@ -215,5 +215,10 @@
     },
     "closingTitle": "{store} — Pure as Gold",
     "closingBody": "From the values that shaped our beginnings to the kitchens we aspire to serve, our purpose remains rooted in trust, quality, and togetherness."
+  },
+  "legal": {
+    "eyebrow": "Legal",
+    "updated": "Last updated: {date}",
+    "toc": "On this page"
   }
 }

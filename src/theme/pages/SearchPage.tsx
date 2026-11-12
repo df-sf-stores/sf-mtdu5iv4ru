@@ -2,7 +2,8 @@ import { Link, SearchField, useCollections, useSearch, useStorefront } from '@dr
 import { Layout } from '../components/Layout'
 import { ListingResults } from '../components/ListingResults'
 import { Notice } from '../components/Notice'
-import styles from '../styles/shop.module.css'
+import shop from '../styles/shop.module.css'
+import styles from '../styles/listing.module.css'
 
 export const SearchPage = () => {
   const { t } = useStorefront()
@@ -11,20 +12,26 @@ export const SearchPage = () => {
   const none = search.status === 'ready' && search.items.length === 0 && search.selected.length === 0
   return (
     <Layout>
-      <section className={styles.page}>
-        <header className={styles.intro}>
-          <h1 className={styles.title}>{search.query ? t('shop.search.results', { query: search.query }) : t('shop.search.title')}</h1>
-          {search.query ? null : <p className={styles.lead}>{t('shop.search.lead')}</p>}
+      <section>
+        <header className={styles.hero}>
+          <div className={styles.heroInner}>
+            <h1 className={styles.title}>{search.query ? t('shop.search.results', { query: search.query }) : t('shop.search.title')}</h1>
+            {search.query ? null : <p className={styles.lead}>{t('shop.search.lead')}</p>}
+            <SearchField label={t('shop.search.label')} placeholder={t('shop.search.placeholder')} button={t('shop.search.button')} value={search.query} onSearch={search.setQuery} className={shop.search} />
+          </div>
         </header>
-        <SearchField label={t('shop.search.label')} placeholder={t('shop.search.placeholder')} button={t('shop.search.button')} value={search.query} onSearch={search.setQuery} className={styles.search} />
         {none ? (
-          <Notice title={t('shop.search.none', { query: search.query })} lead={t('shop.search.noneLead')}>
-            {collections.map((c) => (
-              <Link key={c.id} href={c.href} className={styles.chipLink}>
-                {c.name}
-              </Link>
-            ))}
-          </Notice>
+          <div className={styles.band}>
+            <div className={styles.wrap}>
+              <Notice title={t('shop.search.none', { query: search.query })} lead={t('shop.search.noneLead')}>
+                {collections.map((c) => (
+                  <Link key={c.id} href={c.href} className={shop.chipLink}>
+                    {c.name}
+                  </Link>
+                ))}
+              </Notice>
+            </div>
+          </div>
         ) : search.status === 'idle' ? null : (
           <ListingResults listing={search} />
         )}

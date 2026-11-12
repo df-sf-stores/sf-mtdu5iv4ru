@@ -6,11 +6,12 @@
     "from": "From",
     "soldOut": "Sold out",
     "noPicture": "No picture yet",
-    "view": "View details"
+    "view": "View details",
+    "viewProduct": "View product"
   },
   "listing": {
     "heading": "Products",
-    "showing": "{count, plural, one {Showing # product} other {Showing # products}}",
+    "showing": "{count, plural, one {# product} other {# products}}",
     "filters": "Filters",
     "filtersShown": "Hide filters",
     "clear": "Clear filters",
@@ -21,7 +22,7 @@
       "newest": "Newest",
       "priceLow": "Price, low to high",
       "priceHigh": "Price, high to low",
-      "name": "Name"
+      "name": "Name: A to Z"
     },
     "price": "Price",
     "loadingMore": "Loading more products…",
@@ -31,18 +32,24 @@
     "loading": "Loading products",
     "failed": "We couldn't load these products",
     "failedLead": "Check your connection and try again.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "sortShort": "Sort:",
+    "views": "Show products as",
+    "grid": "Grid",
+    "list": "List",
+    "toggleGroup": "Show or hide {name}"
   },
   "collection": {
-    "all": "All products",
-    "allLead": "Everything in the shop.",
+    "all": "Shop All Products",
+    "allLead": "Explore our collection of authentic spices, masalas, salt and honey.",
     "loading": "Loading the collection",
     "missing": "We can't find that collection",
     "missingLead": "It may have moved or been taken down.",
     "browse": "Browse all products",
     "empty": "Nothing here yet",
     "emptyLead": "There are no products to show here yet. Come back soon.",
-    "home": "Go to the home page"
+    "home": "Go to the home page",
+    "allCrumb": "Shop All"
   },
   "search": {
     "title": "Search the shop",

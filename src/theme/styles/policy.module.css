@@ -96,3 +96,353 @@
     padding: 64px 32px;
   }
 }
+
+/* The privacy policy and the terms (LegalDocument): the live site's legal pages. Tokens come from layout.module.css's .shell. */
+
+.legalHero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgb(213 166 66 / 25%);
+  background: var(--cream);
+}
+
+.legalDots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--gold) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, #000, transparent 80%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.legalHeroInner,
+.legalGrid {
+  position: relative;
+  box-sizing: border-box;
+  width: min(var(--page-width), 100% - 32px);
+  margin-inline: auto;
+}
+
+.legalHeroInner {
+  padding: 48px 0;
+}
+
+.legalEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.legalEyebrowRule {
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.legalTitle {
+  max-width: 672px;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--heading-font);
+  font-size: 2.4rem;
+  font-weight: var(--heading-weight);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.legalUpdated {
+  margin: 16px 0 0;
+  color: rgb(40 35 33 / 60%);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.legalBody {
+  padding: 40px 0;
+  background: var(--bg);
+}
+
+.legalGrid {
+  display: grid;
+  gap: 24px;
+}
+
+.legalNav {
+  display: none;
+}
+
+.legalNavSticky {
+  position: sticky;
+  top: 96px;
+}
+
+.legalNavLabel {
+  margin: 0 0 12px;
+  color: var(--accent-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.legalNavList,
+.legalMobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid rgb(40 35 33 / 10%);
+  font-size: 14px;
+  line-height: 20px;
+  list-style: none;
+}
+
+.legalNavItem,
+.legalNavItemActive {
+  margin: 0;
+}
+
+.legalNavLink {
+  display: block;
+  margin-left: -1px;
+  padding-left: 12px;
+  border-left: 1px solid transparent;
+  color: rgb(40 35 33 / 60%);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.legalNavLink:hover,
+.legalNavItemActive .legalNavLink {
+  border-left-color: var(--accent);
+  color: var(--accent);
+}
+
+.legalNavLink:focus-visible,
+.legalMobileToggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.legalMobileNav {
+  border: 1px solid rgb(213 166 66 / 25%);
+  border-radius: var(--radius-small);
+  background: var(--cream);
+}
+
+.legalMobileToggle {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--accent-deep);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.legalChevron,
+.legalChevronOpen {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+.legalChevronOpen {
+  transform: rotate(180deg);
+}
+
+.legalMobileList {
+  margin: 0 16px 16px;
+}
+
+.legalMobileList .legalNavLink {
+  padding-block: 4px;
+}
+
+.legalArticle {
+  min-width: 0;
+  max-width: 768px;
+}
+
+.legalSection {
+  padding: 24px 0;
+  border-bottom: 1px solid rgb(40 35 33 / 10%);
+  position: relative;
+  /* Clears the sticky header, which adds a search row below 1024px. */
+  scroll-margin-top: 132px;
+}
+
+/* Sits a header's height above the heading: on screen only while the heading is below the sticky header (LegalToc). */
+.legalMarker {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.legalSection:first-child .legalMarker {
+  top: -124px;
+}
+
+.legalSection:first-child {
+  padding-top: 0;
+}
+
+.legalSection:last-child {
+  border-bottom: 0;
+}
+
+.legalHeading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.legalNumber {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.legalText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  color: rgb(40 35 33 / 75%);
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+.legalParagraph {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.legalList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0 0 0 4px;
+  list-style: none;
+}
+
+.legalItem {
+  display: flex;
+  gap: 12px;
+  overflow-wrap: anywhere;
+}
+
+.legalDot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  margin-top: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.legalMark {
+  padding: 2px 6px;
+  border: 1px dashed var(--gold);
+  border-radius: 4px;
+  background: rgb(213 166 66 / 10%);
+  box-decoration-break: clone;
+  color: rgb(40 35 33 / 80%);
+  font-size: 14px;
+}
+
+.legalMarkLabel {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .legalHeroInner {
+    padding: 64px 0;
+  }
+
+  .legalTitle {
+    font-size: 48px;
+  }
+
+  .legalUpdated {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .legalBody {
+    padding: 56px 0;
+  }
+
+  .legalHeading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .legalGrid {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .legalNav {
+    display: block;
+  }
+
+  .legalSection {
+    scroll-margin-top: 96px;
+  }
+
+  .legalMarker {
+    top: -64px;
+  }
+
+  .legalSection:first-child .legalMarker {
+    top: -88px;
+  }
+
+  .legalMobileNav {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { Link, useLocation, useStorefront } from '@dripfunnel/storefront-core/theme'
 import { Layout } from '../components/Layout'
+import { LegalDocument } from '../components/LegalDocument'
 import styles from '../styles/policy.module.css'
 
 const kinds = ['terms', 'privacy', 'shipping', 'returns', 'legal'] as const
@@ -34,6 +35,13 @@ export const PolicyPage = () => {
     returns: { title: t('policies.returns.title'), body: t('policies.returns.body') },
     legal: { title: t('pages.policy.legal'), body: '' },
   }
+  // The privacy policy and the terms have their own pages; their old addresses show the same document.
+  if (kind === 'privacy' || kind === 'terms')
+    return (
+      <Layout>
+        <LegalDocument kind={kind} />
+      </Layout>
+    )
   const page = kind ? pages[kind] : null
   return (
     <Layout>

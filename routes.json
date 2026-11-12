@@ -29,6 +29,8 @@
     "/contact": "ContactPage",
     "/help": "FaqPage",
     "/our-story": "OurStoryPage",
-    "/vision-mission": "VisionPage"
+    "/vision-mission": "VisionPage",
+    "/privacy-policy": "PrivacyPolicyPage",
+    "/terms-and-conditions": "TermsPage"
   }
 }
