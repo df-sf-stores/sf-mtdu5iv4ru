@@ -457,6 +457,157 @@
   color: #fff;
 }
 
+/* The header's account control (interactive/AccountMenu): where Sign in stands, once the shopper is signed in. */
+
+.accountHold {
+  display: none;
+  width: 92px;
+  height: 40px;
+  margin-left: 6px;
+}
+
+.account {
+  position: relative;
+  display: none;
+  margin-left: 6px;
+}
+
+.accountButton,
+.accountButtonOpen {
+  display: inline-flex;
+  min-height: 40px;
+  max-width: 180px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px 0 10px;
+  border: 1px solid rgb(120 27 39 / 30%);
+  border-radius: 999px;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.accountButton:hover,
+.accountButtonOpen {
+  border-color: var(--accent);
+  background: var(--header-hover);
+}
+
+.accountIcon,
+.accountChevron {
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.accountIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.accountChevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.accountButtonOpen .accountChevron {
+  transform: rotate(180deg);
+}
+
+.accountName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Under the open list: a press anywhere outside it closes it. */
+.accountBackdrop {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.accountPanel {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgb(40 35 33 / 14%);
+}
+
+.accountList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accountLink,
+.accountSignOut {
+  display: flex;
+  width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.accountLink:hover,
+.accountSignOut:hover {
+  background: var(--soft);
+  color: var(--accent);
+}
+
+.accountSignOut {
+  margin-top: 4px;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 8px 8px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.accountSignOut:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.accountButton:focus-visible,
+.accountButtonOpen:focus-visible,
+.accountLink:focus-visible,
+.accountSignOut:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
 .count {
   position: absolute;
   top: 0;
@@ -1033,8 +1184,13 @@
 
   .language,
   .wishTool,
-  .signIn {
+  .signIn,
+  .accountHold {
     display: inline-flex;
+  }
+
+  .account {
+    display: block;
   }
 
   .catList {

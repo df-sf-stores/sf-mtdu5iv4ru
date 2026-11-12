@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { ConsentBanner, Link, MerchantImage, navigate, PoweredBy, PreviewBanner, SearchField, StoreLogo, useCart, useCollections, useMenu, useStorefront, useWishlist } from '@dripfunnel/storefront-core/theme'
 import { CategoryIcon, iconFor } from './CategoryIcon'
 import { useContact } from './contact'
+import { AccountMenu } from './interactive/AccountMenu'
 import { Menu } from './interactive/Menu'
 import { NavItem } from './interactive/NavItem'
 import styles from '../styles/layout.module.css'
@@ -168,9 +169,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
                 </span>
               ) : null}
             </Link>
-            <Link href="/account/" className={styles.signIn}>
-              {t('common.tools.signIn')}
-            </Link>
+            <AccountMenu />
           </div>
         </div>
       </header>

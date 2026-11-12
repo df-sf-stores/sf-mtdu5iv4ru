@@ -70,5 +70,14 @@
     "gstin": "05HJQPS4773A1ZT",
     "taxId": "GSTIN: {id}",
     "mailto": "mailto:{email}"
+  },
+  "accountMenu": {
+    "label": "Account menu for {name}",
+    "myAccount": "My Account",
+    "orders": "My Orders",
+    "addresses": "My Addresses",
+    "wishlist": "Wishlist",
+    "signOut": "Sign out",
+    "signingOut": "Signing out…"
   }
 }
