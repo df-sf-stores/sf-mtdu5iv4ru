@@ -1,25 +1,8 @@
 import { Link, useStorefront } from '@dripfunnel/storefront-core/theme'
 import { Layout } from '../components/Layout'
+import { groupsOf } from '../components/faqGroups'
 import policy from '../styles/policy.module.css'
 import styles from '../styles/faq.module.css'
-
-const linkLine = /^\[(.+)\]\((\/[^)]*)\)$/
-
-type Group = { title: string; items: { question: string; answer: string[]; link: { label: string; href: string } | null }[] }
-
-/**
- * The FAQ from content: blocks split by a blank line, '## ' starting a group, and a question
- * block being 'Q: question', its answer lines, then an optional '[label](address)' line.
- */
-const groupsOf = (text: string): Group[] =>
-  text.split('\n\n').reduce<Group[]>((groups, block) => {
-    if (block.startsWith('## ')) return [...groups, { title: block.slice(3), items: [] }]
-    const [first = '', ...rest] = block.split('\n')
-    const match = linkLine.exec(rest.at(-1) ?? '')
-    const item = { question: first.replace(/^Q:\s*/, ''), answer: match ? rest.slice(0, -1) : rest, link: match ? { label: match[1] ?? '', href: match[2] ?? '/' } : null }
-    const last = groups.at(-1)
-    return last ? [...groups.slice(0, -1), { ...last, items: [...last.items, item] }] : groups
-  }, [])
 
 export const FaqPage = () => {
   const { store, t } = useStorefront()

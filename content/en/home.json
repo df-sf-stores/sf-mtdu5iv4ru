@@ -1,70 +1,113 @@
 {
-  "title": "Shop our collections",
+  "title": "Spices, masalas, salt and honey",
   "hero": {
-    "region": "Featured collections",
+    "region": "Featured",
     "role": "carousel",
+    "slide": "slide",
     "previous": "Previous slide",
     "next": "Next slide",
     "pause": "Pause the slides",
     "play": "Play the slides",
-    "goTo": "Go to slide {n}",
-    "first": "Our latest collection, shop now",
-    "second": "Shop the collection",
-    "third": "Explore more of the shop"
+    "goTo": "Slide {n}",
+    "eyebrow": "{store} collection",
+    "eyebrowCount": "{store} collection · {count, plural, one {# product} other {# products}}",
+    "body": "Carefully selected {name} to bring authentic taste, aroma and natural goodness to your meals.",
+    "shop": "Shop {name}",
+    "explore": "Explore Products",
+    "badge": "Pure as Gold",
+    "intro": {
+      "eyebrow": "{store} · Pure as Gold",
+      "first": "Pure Spice.",
+      "second": "Bold Flavour.",
+      "third": "Every Day.",
+      "body": "Everyday spices, chilli, masalas, salt and honey from {store}, carefully selected for authentic taste and aroma in your kitchen.",
+      "shop": "Shop Spices",
+      "explore": "Explore Collections"
+    }
   },
-  "newest": "New Arrivals",
-  "newestEmpty": "New arrivals are on their way. Check back soon.",
-  "featured": "Featured Products",
-  "viewAll": "View all products",
+  "newestEmpty": "New products are on their way. Check back soon.",
+  "viewAll": "View All Products",
   "promises": {
     "title": "Why shop with us",
     "craft": {
-      "title": "Chosen with Care",
-      "body": "Every piece is picked for its quality and finish"
+      "title": "Authentic Selection",
+      "body": "Carefully selected spices and kitchen essentials"
     },
     "stage": {
-      "title": "For Every Occasion",
-      "body": "Something for everyday wear and special days alike"
+      "title": "Quality Focused",
+      "body": "Quality-checked staples for everyday cooking"
     },
     "secure": {
       "title": "Secure Checkout",
-      "body": "Pay safely through trusted payment partners"
+      "body": "Safe and secure online payment"
     },
     "support": {
-      "title": "Here to Help",
-      "body": "Questions about an order? Get in touch with us"
+      "title": "Customer Support",
+      "body": "Reach us on WhatsApp or email"
     }
   },
-  "collections": {
-    "eyebrow": "Shop by Category",
-    "title": "Explore Our Collections",
-    "explore": "Explore"
+  "categories": {
+    "eyebrow": "Categories",
+    "title": "Shop by Category",
+    "lead": "Explore our range of everyday spices, masalas, salt and natural products.",
+    "all": "Shop all products",
+    "count": "{count, plural, =0 {Coming soon} one {# product} other {# products}}",
+    "body": "A selection of {name}, carefully sourced for flavour.",
+    "allTitle": "All Products"
   },
-  "deals": {
-    "eyebrow": "Handpicked for you"
+  "shop": {
+    "eyebrow": "The {store} range",
+    "title": "Shop Our Spices",
+    "lead": "Pick your pack size and add to cart — everything we sell, in one place.",
+    "filter": "Filter products by collection",
+    "all": "All",
+    "inStock": "In Stock",
+    "add": "Add to Cart",
+    "buy": "Buy Now"
   },
-  "spotlight": {
-    "eyebrow": "Featured Collection",
-    "body": "Discover the pieces in this collection, chosen for their quality and craft.",
-    "cta": "Shop all {name}"
+  "promo": {
+    "title": "Offers from our collections",
+    "tagCount": "{name} · {count, plural, one {# product} other {# products}}",
+    "rich": {
+      "title": "Bring Every Recipe to Life",
+      "body": "Traditional and blended masalas crafted from carefully selected spices to add rich flavour and authentic Indian taste to every recipe."
+    },
+    "fresh": {
+      "title": "Simple Essentials. Everyday Flavour.",
+      "body": "Everyday and speciality staples selected to enhance the natural flavour of your food while adding the right balance to every dish."
+    }
   },
   "story": {
     "eyebrow": "Our Story",
-    "title": "Made with care,",
-    "accent": "chosen for you.",
-    "lead": "We bring together pieces we love, chosen for their quality, their craft and the way they make you feel.",
-    "body": "Whether you are shopping for yourself or for someone special, every item in our collection is picked to look as good as it feels.",
-    "more": "Explore the collection"
-  },
-  "range": {
-    "eyebrow": "Explore the Range",
-    "title": "Find Exactly What You Need",
-    "shopAll": "Shop all {name}"
+    "title": "Pure as Gold, for Every Kitchen",
+    "lead": "{store} is an emerging enterprise specialising in the processing, trading and distribution of high-quality kitchen essentials, natural sweeteners and everyday food products.",
+    "body": "Headquartered in Kotdwara, Uttarakhand, the business focuses on delivering pure, aromatic and quality-checked kitchen staples to domestic and commercial markets.",
+    "place": "Kotdwara, Uttarakhand",
+    "portfolio": "Company portfolio",
+    "more": "Discover Our Story",
+    "portfolioList": "Spices | Salt | Hing | Dry Fruits | Oils | Honey"
   },
   "signup": {
-    "eyebrow": "Join us",
-    "title": "Shop faster with an account",
-    "body": "Create an account for faster checkout, order tracking and saved addresses.",
-    "action": "Create Account"
+    "eyebrow": "Join the {store} family",
+    "title": "Bring More Flavour to Your Kitchen",
+    "body": "Create an account for faster checkout, order tracking and a smoother shopping experience.",
+    "action": "Create Account",
+    "signIn": "Sign In"
+  },
+  "faq": {
+    "eyebrow": "Need help?",
+    "lead": "Answers about ordering, payment, delivery and your account.",
+    "help": "Message us on WhatsApp or send an email — we'll help with any product or order question.",
+    "body": "## Questions\n\nQ: How do I place an order?\nChoose a product, pick a pack size, and tap Add to Cart. When you are ready, open your cart and continue to checkout to enter your delivery details and pay.\n\nQ: What products does {store} offer?\nOur online shop covers everyday spices, chilli, masalas, salt and honey. Everything available to order is listed in the shop, with its pack sizes and price.\n[Browse all products](/collections/all/)\n\nQ: Which payment methods can I use?\nThe payment options available for your order are shown at the payment step of checkout, where you can pay securely online.\n\nQ: Do you deliver to my location?\nEnter your delivery address at checkout: the delivery options available for that address, with their charges, are shown before you pay. If no option appears, we cannot deliver there yet.\n\nQ: Do I need an account to order?\nNo. You can check out as a guest. Creating an account lets you see your past orders and saved addresses in one place.\n[Create an account](/register/)\n\nQ: How can I track my order?\nSign in and open Account → Orders. Each order shows its status, and shipment tracking details appear there once they are available.\n[View my orders](/account/orders/)\n\nQ: How should I store spices?\nKeep spices in a cool, dry place away from direct sunlight, heat and moisture. Close the pack tightly after each use and always use a dry spoon."
+  },
+  "reviews": {
+    "eyebrow": "Customer Reviews",
+    "title": "What Our Customers Say",
+    "lead": "Real reviews from {store} customers on Google.",
+    "source": "Reviews on Google",
+    "from": "Reviews from Google",
+    "all": "See all reviews on Google",
+    "address": "https://share.google/eSHjesuuQtXQ8nqLH",
+    "list": "Aman Tiwari | Local Guide\nBest home made spices in the town made with real Indigrients go people if u really wanna grab the real taste wid no added artificial flavours try it once u gonna love the purity n tast too for sure✌\n\nShivani Vlog\nSpices are different from others. Totally authentic taste. Thank you so much {store} . Always have prosperity 👏🏻\n\nSaurabh sagar Sati | Local Guide\nBest in the Business. {store} is fullfiling our desire of delicious food. Thanks for making our society healthy.\n\nDeepshikha Joshi\nAuthentic spices ..and doesn't compromises with the quality as well...thums up...\n\nChandra Pandey\n100% pure, good for health and taste.. I strongly recommend for every family. Try it🙂\n\nRakesh Sati\n{store} are original and pure. Taste is awesome."
   }
 }

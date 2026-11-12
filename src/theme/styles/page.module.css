@@ -1,12 +1,12 @@
 .page {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
   margin-inline: auto;
-  padding: 40px 16px 8px;
+  padding: 40px 0 8px;
 }
 
 .title {

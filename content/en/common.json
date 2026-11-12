@@ -4,9 +4,15 @@
     "menu": "Menu",
     "submenu": "Submenu: {item}",
     "home": "Home",
-    "shopAll": "Shop all",
+    "shopAll": "Shop All",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "company": "Company",
+    "categories": "Shop by category",
+    "story": "Our Story",
+    "vision": "Vision & Mission"
   },
   "tools": {
     "search": "Search",
@@ -15,22 +21,54 @@
     "wishlist": "Wishlist",
     "wishlistCount": "Wishlist, {count, plural, one {# item} other {# items}}",
     "cart": "Cart",
-    "cartCount": "Cart, {count, plural, one {# item} other {# items}}"
+    "cartCount": "Cart, {count, plural, one {# item} other {# items}}",
+    "signIn": "Sign in",
+    "language": "English"
   },
   "footer": {
-    "note": "Thank you for shopping with us.",
+    "note": "Everyday spices, masalas, salt and honey, selected for authentic taste and aroma.",
     "shop": "Shop",
-    "all": "Shop all",
+    "all": "Shop All",
     "help": "Help",
-    "shipping": "Shipping",
-    "returns": "Returns",
-    "privacy": "Privacy",
-    "terms": "Terms",
+    "shipping": "Shipping Policy",
+    "returns": "Return Policy",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
     "legal": "Legal",
-    "touch": "Get in touch",
-    "orders": "My orders",
+    "touch": "Contact",
+    "orders": "Orders",
     "faq": "FAQs",
     "whatsapp": "Chat with us on WhatsApp",
-    "rights": "© 2026 {store}. All rights reserved."
+    "rights": "© 2026 {store}. All rights reserved.",
+    "poweredBy": "Powered by",
+    "poweredAlt": "DripFunnel",
+    "poweredLogo": "none",
+    "poweredUrl": "https://www.dripfunnel.com/in/",
+    "customer": "Customer",
+    "company": "Company",
+    "myAccount": "My Account",
+    "write": "Write to us",
+    "perks": {
+      "secure": "Secure Checkout",
+      "quality": "Quality-checked staples",
+      "selected": "Carefully selected spices",
+      "support": "WhatsApp & email support"
+    }
+  },
+  "top": {
+    "promise": "Pure as Gold — {store}",
+    "secure": "Secure online checkout",
+    "track": "Track Your Order",
+    "help": "FAQs"
+  },
+  "contact": {
+    "phone": "9119018057",
+    "email": "manyogspices@gmail.com",
+    "chat": "https://wa.me/919119018057",
+    "whatsapp": "WhatsApp:",
+    "address": "Ward No 36 Lokmanipur Siggadi | Kotdwara Uttrakhand | PIN 246149",
+    "gstin": "05HJQPS4773A1ZT",
+    "taxId": "GSTIN: {id}",
+    "mailto": "mailto:{email}"
   }
 }

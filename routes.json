@@ -27,6 +27,8 @@
   "custom": {
     "/about": "AboutPage",
     "/contact": "ContactPage",
-    "/help": "FaqPage"
+    "/help": "FaqPage",
+    "/our-story": "OurStoryPage",
+    "/vision-mission": "VisionPage"
   }
 }

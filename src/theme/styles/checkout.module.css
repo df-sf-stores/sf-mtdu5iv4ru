@@ -6,13 +6,12 @@
 .bar {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
   min-height: 64px;
   align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
   margin-inline: auto;
-  padding-inline: 16px;
 }
 
 .secure {
@@ -47,24 +46,24 @@
 .footer {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin: 40px auto 0;
-  padding: 20px 16px 24px;
+  padding: 20px 0 24px;
   border-top: 1px solid var(--line);
 }
 
 .page {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
   flex-direction: column;
   gap: 16px;
   margin-inline: auto;
-  padding: 20px 16px 8px;
+  padding: 20px 0 8px;
 }
 
 .title {
@@ -492,20 +491,7 @@
   }
 }
 
-/* Checkout's footer is light, unlike the main footer, so its sealed pieces keep the page's ink from .shell. */
-.cookies {
-  display: block;
-}
-
-.cookies::part(button) {
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--button-radius);
-  background: transparent;
-  color: var(--ink);
-}
-
+/* Checkout's footer is light, unlike the main footer, so its sealed piece keeps the page's ink from .shell. */
 .powered {
   display: block;
 }

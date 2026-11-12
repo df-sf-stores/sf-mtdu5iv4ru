@@ -12,9 +12,10 @@
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: inherit;
+  color: var(--accent);
   cursor: pointer;
-  order: 2;
+  order: -1;
+  margin-left: -10px;
 }
 
 .toggle:focus-visible {
@@ -47,18 +48,17 @@
 .open {
   display: block;
   flex-basis: 100%;
-  order: 3;
+  order: 6;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .toggle {
     display: none;
   }
 
+  /* From laptop width the category strip and the top links carry the menu's places. */
   .panel,
   .open {
-    display: block;
-    flex-basis: auto;
-    order: 0;
+    display: none;
   }
 }

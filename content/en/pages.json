@@ -58,46 +58,45 @@
     "lead": "The shop is closed for now. Please come back later."
   },
   "about": {
-    "eyebrow": "Our Story",
-    "title": "About {store}",
-    "lead": "Welcome to {store}. Here is a little about who we are and what we do.",
-    "story": {
-      "eyebrow": "Who we are",
-      "title": "A shop built on",
-      "accent": "care and quality",
-      "first": "We started {store} to bring together pieces we love and believe in. Every item in our shop is chosen with care, so you can shop with confidence.",
-      "second": "We are always adding to our collections, and we are glad to hear what you would like to see next. Thank you for shopping with us."
+    "eyebrow": "About {store}",
+    "title": "Bringing Quality and Flavour to Every Kitchen",
+    "lead": "{store} is an emerging enterprise specializing in the processing, trading, and distribution of high-quality kitchen essentials, natural sweeteners, and everyday food products. Headquartered in Kotdwara, Uttarakhand, India, the company focuses on delivering quality kitchen staples to domestic and commercial markets.",
+    "chips": "Kotdwara, Uttarakhand, India | Kitchen Essentials & Food Products",
+    "action": "Discover Our Story",
+    "caption": "Kotdwara, Uttarakhand, India",
+    "company": {
+      "eyebrow": "Our Company",
+      "title": "Everyday Essentials, Thoughtfully Presented",
+      "first": "{store} works across the processing, trading and distribution of kitchen essentials, natural sweeteners and everyday food products — the staples that go into cooking every day.",
+      "second": "From its base in Kotdwara, Uttarakhand, the company serves both domestic and commercial markets. A selection of the range can be ordered in our online shop, with every pack size and price listed.",
+      "hq": "Headquarters",
+      "hqValue": "Kotdwara, Uttarakhand, India",
+      "work": "What we do",
+      "workValue": "Processing · Trading · Distribution",
+      "markets": "Markets",
+      "marketsValue": "Domestic & commercial",
+      "online": "In our online shop",
+      "onlineValue": "{count, plural, one {# product} other {# products}}"
     },
-    "promise": {
-      "eyebrow": "Our Promise",
-      "title": "More than just products",
-      "body": "We want every order to be a pleasure, from the moment you browse to the moment it arrives.",
-      "designs": {
-        "title": "Thoughtful Choices",
-        "body": "Pieces picked for their design and the way they are made."
-      },
-      "quality": {
-        "title": "Lasting Quality",
-        "body": "Made to be used, enjoyed and kept."
-      },
-      "service": {
-        "title": "Friendly Service",
-        "body": "Real people ready to help with your order."
-      }
+    "commitment": {
+      "eyebrow": "Our Commitment",
+      "title": "Quality Matters in Every Kitchen",
+      "lead": "The ideas that guide how {store} chooses and presents its range.",
+      "values": "Thoughtfully Selected Products\nA focused range of spices, salt, honey and other staples, chosen with everyday cooking in mind.\n\nEveryday Kitchen Essentials\nIngredients meant for daily use — the staples families reach for at every meal.\n\nServing Domestic and Commercial Needs\nSupplying household kitchens as well as commercial customers, from our base in Kotdwara."
     },
     "visit": {
       "title": "Visit Our Store",
       "lead": "Come see the collection in person.",
       "whatsapp": "Chat on WhatsApp"
-    },
-    "closing": "Thank you for choosing {store}."
+    }
   },
   "contact": {
     "title": "Get in touch",
     "lead": "Questions about an order or anything else? Write to us and we will reply.",
     "email": "Email",
-    "phone": "Phone",
-    "visit": "Visit"
+    "phone": "WhatsApp",
+    "visit": "Visit",
+    "chat": "Message us on WhatsApp"
   },
   "content": {
     "loading": "Loading the page",
@@ -123,5 +122,98 @@
     "by": "by {author}",
     "tags": "Tags",
     "olderFailed": "We couldn't load older posts. Try again."
+  },
+  "company": {
+    "shopRange": "Shop this range",
+    "explore": "Explore Products",
+    "readStory": "Read Our Story",
+    "guidesTitle": "Discover What Guides Us",
+    "guidesBody": "Learn more about the vision and mission that shape the {store} journey.",
+    "vision": "Vision & Mission",
+    "rangeEyebrow": "Core Product Portfolio",
+    "rangeTitle": "A Range for Every Kitchen",
+    "rangeLead": "Explore our diverse range of kitchen essentials and everyday food products.",
+    "range": "Spices: Whole and powdered spices, including red chilli, turmeric, bay leaves, ginger and specialty blends.\nSalt: Culinary salt varieties for everyday cooking and household use.\nHing (Asafoetida): Raw and compounded hing for traditional cooking.\nDry Fruits: Dry fruits and nuts for snacking and culinary use.\nOils: Edible cooking oils for everyday kitchen needs.\nHoney: Natural honey products with their characteristic flavour and aroma.",
+    "closingTitle": "Pure as Gold",
+    "closingBody": "Discover the products that bring flavour and character to everyday cooking."
+  },
+  "story": {
+    "eyebrow": "The Story Behind {store}",
+    "title": "Bachpan Ke Pyaar Se Rasoi Ke Swad Tak",
+    "tagline": "{store} — Pure as Gold",
+    "lead": "{store} began with a childhood bond between two brothers and a shared vision of bringing flavour and care into everyday kitchens.",
+    "action": "Explore Our Products",
+    "caption": "Manu + Yogi",
+    "founded": "Founded in",
+    "foundedValue": "2018",
+    "beginning": {
+      "eyebrow": "The Beginning",
+      "title": "The Roots: Jab Sapne Ne Li Aakar",
+      "body": "In 2018, {store} began as more than a business idea. It grew from the childhood dream and mutual trust of two brothers, Mayank Sati and Yogesh Sati, who founded the brand together.",
+      "founders": "Founded by two brothers",
+      "first": "Mayank Sati",
+      "second": "Yogesh Sati",
+      "role": "Co-founder"
+    },
+    "meaning": {
+      "eyebrow": "The Meaning Behind the Name",
+      "title": "Two Brothers. One Name. A Shared Dream.",
+      "lead": "The name is deeply personal. It joins the childhood nicknames the two brothers grew up calling each other.",
+      "manu": "Manu",
+      "manuOf": "Mayank Sati",
+      "manuWords": "Mayank’s affectionate childhood nickname, Manu, gives the name its “Man”.",
+      "yogi": "Yogi",
+      "yogiOf": "Yogesh Sati",
+      "yogiWords": "Yogesh’s affectionate childhood nickname, Yogi, gives the name its “Yog”.",
+      "name": "Manyog",
+      "nameOf": "Two nicknames, one name",
+      "nameWords": "A name that carries childhood memories, brotherhood, trust, affection and unity.",
+      "plus": "+",
+      "equals": "="
+    },
+    "family": {
+      "eyebrow": "From Our Family to Your Kitchen",
+      "title": "Purity We Promise: Khet Se Rasoi Tak",
+      "lead": "The values of care, trust, and togetherness that shaped the brand’s beginnings continue to inspire its journey. Today, the brand offers a growing range of kitchen essentials designed for everyday cooking."
+    },
+    "values": {
+      "eyebrow": "Our Values",
+      "title": "What We Stand For",
+      "list": "Family and Togetherness\nThe name reflects the childhood bond between its founders and the values of trust and unity.\n\nCare for Everyday Kitchens\nThe brand focuses on kitchen essentials and everyday food products for domestic and commercial customers.\n\nPure as Gold\nAn expression of the brand’s commitment to honesty, care, and the values behind its name."
+    },
+    "closingTitle": "From Childhood Memories to the Flavour of Your Kitchen",
+    "closingBody": "{store} is more than a name. It represents the bond between Manu and Yogi, the trust that brought their dream to life, and the desire to share flavour with families through everyday kitchen essentials.",
+    "shop": "Shop Our Products",
+    "about": "About {store}"
+  },
+  "vision": {
+    "eyebrow": "Our Purpose",
+    "title": "Our Purpose: Vision & Mission",
+    "tagline": "Our Vision. Our Mission. Our Promise.",
+    "lead": "Rooted in family values and inspired by trust, {store} strives to bring quality food essentials closer to every home.",
+    "action": "Explore Our Products",
+    "caption": "Pure as Gold",
+    "hindiLabel": "In our own words (Hindi)",
+    "englishLabel": "In English",
+    "vision": {
+      "eyebrow": "Where We Are Headed",
+      "title": "Our Vision",
+      "hindi": "“Bharat ke har ghar mein shuddhata, imandaari aur bharose ka doosra naam banna, jahan har parivaar Manyog ko apne hi parivaar ka hissa maane.”",
+      "english": "To become a trusted name for purity, honesty, and confidence in every Indian home, so that every family considers us a part of its own family."
+    },
+    "mission": {
+      "eyebrow": "What We Work Towards",
+      "title": "Our Mission",
+      "lead": "Our mission begins with the bond between the two brothers who founded the brand, Mayank and Yogesh Sati, and the values they grew up with.",
+      "hindi": "“Bhaiyon ke aapas ke vishwas aur bachpan ke sanskaaron ko aadhar banakar, grahakon (customers) tak 100% pure, natural aur premium quality ke food products kifayati daamon mein uplabdh karwana.”",
+      "english": "To build on the trust between the two brothers and the values instilled in them during childhood, making pure, natural, and premium-quality food products accessible to customers at affordable prices."
+    },
+    "values": {
+      "eyebrow": "What Guides Us",
+      "title": "The Values Behind the Name",
+      "list": "Trust\nInspired by the bond between the founders and the trust at the heart of the name.\n\nHonesty\nA commitment to conducting business with honesty and care.\n\nQuality and Accessibility\nA focus on offering premium-quality food products at affordable prices, as expressed in our mission."
+    },
+    "closingTitle": "{store} — Pure as Gold",
+    "closingBody": "From the values that shaped our beginnings to the kitchens we aspire to serve, our purpose remains rooted in trust, quality, and togetherness."
   }
 }

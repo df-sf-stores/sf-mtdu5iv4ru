@@ -1,55 +1,79 @@
-import { useStorefront } from '@dripfunnel/storefront-core/theme'
-import { Layout } from '../components/Layout'
-import about from '../styles/about.module.css'
-import policy from '../styles/policy.module.css'
-import styles from '../styles/page.module.css'
+import { Link, useStorefront } from '@dripfunnel/storefront-core/theme'
+import { Band, Eyebrow, Facts, NextPage, companyStyles as styles } from '../components/Company'
+import { useContact } from '../components/contact'
+import { Layout, chatPath } from '../components/Layout'
 
 export const ContactPage = () => {
   const { store, t } = useStorefront()
-  const place = [store.address?.street, store.address?.city, store.address?.region, store.address?.postal].filter(Boolean).join(', ')
+  const contact = useContact()
   return (
     <Layout>
-      <header className={policy.band}>
-        <h1 className={policy.title}>{t('pages.contact.title')}</h1>
-        <span className={policy.rule} />
-        <p className={styles.lead}>{t('pages.contact.lead')}</p>
-      </header>
-      <section className={about.visit}>
-        <div className={about.visitCard}>
-          <div className={about.visitPanel}>
-            <span className={about.visitIcon} aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M4 10h16M5 10l1-5h12l1 5M5 10v10h14V10M9 20v-5h6v5" />
-              </svg>
-            </span>
-            <h2 className={about.visitTitle}>{t('pages.about.visit.title')}</h2>
-            <p className={about.visitLead}>{t('pages.about.visit.lead')}</p>
-          </div>
-          <div className={about.visitDetails}>
-            <p className={about.visitName}>{store.name}</p>
-            <dl className={styles.details}>
-              {store.contactEmail ? (
-                <div className={styles.detail}>
-                  <dt className={styles.term}>{t('pages.contact.email')}</dt>
-                  <dd className={styles.value}>{store.contactEmail}</dd>
-                </div>
-              ) : null}
-              {store.contactPhone ? (
-                <div className={styles.detail}>
-                  <dt className={styles.term}>{t('pages.contact.phone')}</dt>
-                  <dd className={styles.value}>{store.contactPhone}</dd>
-                </div>
-              ) : null}
-              {place ? (
-                <div className={styles.detail}>
-                  <dt className={styles.term}>{t('pages.contact.visit')}</dt>
-                  <dd className={styles.value}>{place}</dd>
-                </div>
-              ) : null}
-            </dl>
+      <section className={styles.hero}>
+        <div className={styles.wrap}>
+          <div className={styles.heroCopy}>
+            <Eyebrow>{t('common.nav.contactUs')}</Eyebrow>
+            <h1 className={styles.heroTitle}>{t('pages.contact.title')}</h1>
+            <p className={styles.heroLead}>{t('pages.contact.lead')}</p>
+            {contact.phone ? (
+              <Link href={contact.chat} className={styles.solidButton}>
+                {t('pages.contact.chat')}
+              </Link>
+            ) : null}
           </div>
         </div>
       </section>
+      <Band>
+        <div className={styles.split}>
+          <div className={styles.splitCopy}>
+            <Eyebrow>{t('pages.about.visit.title')}</Eyebrow>
+            <h2 className={styles.title}>{store.name}</h2>
+            {contact.address.length ? <p className={styles.text}>{contact.address.join(', ')}</p> : null}
+            {contact.taxId ? <p className={styles.textMuted}>{t('common.contact.taxId', { id: contact.taxId })}</p> : null}
+          </div>
+          <Facts
+            items={[
+              ...(contact.phone
+                ? [
+                    {
+                      label: t('pages.contact.phone'),
+                      value: contact.phone,
+                      icon: <path d={chatPath} />,
+                    },
+                  ]
+                : []),
+              ...(contact.email
+                ? [
+                    {
+                      label: t('pages.contact.email'),
+                      value: contact.email,
+                      icon: (
+                        <>
+                          <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+                          <path d="M4 7l8 6 8-6" />
+                        </>
+                      ),
+                    },
+                  ]
+                : []),
+              ...(contact.address.length
+                ? [
+                    {
+                      label: t('pages.contact.visit'),
+                      value: contact.address.join(', '),
+                      icon: (
+                        <>
+                          <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z" />
+                          <circle cx="12" cy="10" r="2.3" />
+                        </>
+                      ),
+                    },
+                  ]
+                : []),
+            ]}
+          />
+        </div>
+      </Band>
+      <NextPage title={t('faq.more.title')} body={t('home.faq.lead')} action={{ href: '/help/', label: t('common.footer.faq') }} />
     </Layout>
   )
 }

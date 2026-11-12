@@ -1,50 +1,66 @@
+/*
+ * The store's design system: one set of tokens every page reads, taken from the live Manyog Spices site.
+ * Burgundy and deep wine carry the brand, gold marks actions, cream softens sections and green says "in stock".
+ */
 .shell {
-  --bg: #faf9f7;
+  --bg: #fff;
   --surface: #fff;
-  --soft: #f2efea;
-  --tint: #e9e4dc;
-  --ink: #2a2725;
-  --ink-soft: #4a4541;
-  --muted: #6b655f;
-  --line: #e2ddd5;
-  --accent: #3f3a36;
-  --accent-ink: #faf9f7;
-  --taupe: #b3a593;
-  --taupe-ink: #2a2725;
-  /* Taupe dark enough to read as text on the page background. */
-  --taupe-text: #6f6252;
-  --deep: #2f2b28;
+  --soft: #fbf5ea;
+  --cream: #fbf5ea;
+  --tint: #f3e8d6;
+  --ink: #282321;
+  --ink-soft: #4a3f39;
+  --muted: #6f655e;
+  --line: #e9ded0;
+  --line-strong: #e2cfb3;
+  --accent: #781b27;
+  --accent-deep: #4b1018;
+  --accent-ink: #fff;
+  --gold: #d5a642;
+  --gold-ink: #2b1a06;
+  --gold-text: #8a5a14;
+  --green: #356b45;
+  --taupe: #d5a642;
+  --taupe-ink: #2b1a06;
+  /* Gold dark enough to read as text on white. */
+  --taupe-text: #8a5a14;
+  --deep: #4b1018;
   --danger: #9a3412;
   --focus: #00519f;
-  --radius: 8px;
-  --button-radius: 6px;
-  --heading-font: 'Cormorant Garamond', georgia, serif;
+  --radius: 16px;
+  --radius-small: 10px;
+  --button-radius: 999px;
+  --heading-font: 'Lora', georgia, 'Times New Roman', serif;
   --heading-weight: 600;
   --brand-weight: 700;
   --heading-case: none;
-  --heading-spacing: 0;
-  --body-font: system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
-  --header-bg: var(--accent);
-  --header-ink: var(--accent-ink);
-  --header-hover: rgb(255 255 255 / 12%);
-  --nav-bg: rgb(250 249 247 / 92%);
-  --footer-bg: #26221f;
+  --heading-spacing: -0.01em;
+  --body-font: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, 'Helvetica Neue', 'Noto Sans', arial, sans-serif;
+  --header-bg: rgb(255 255 255 / 96%);
+  --header-ink: var(--ink);
+  --header-hover: var(--soft);
+  --nav-bg: #fff;
+  --footer-bg: #4b1018;
   --footer-ink: #fff;
   --footer-muted: rgb(255 255 255 / 75%);
-  --footer-line: rgb(179 165 147 / 25%);
-  --picture: linear-gradient(160deg, #f2efea, #ddd6cc);
-  --picture-alt: linear-gradient(160deg, #e9e4dc, #d6cec2);
+  --footer-line: rgb(213 166 66 / 25%);
+  --picture: #fbf5ea;
+  --picture-alt: #f3e8d6;
+  --shadow: 0 18px 40px rgb(75 16 24 / 10%);
+  /* The content column: a 16px gutter on phones, then the width of each breakpoint less that gutter. */
+  --page-width: calc(100% - 32px);
   --df-sealed-font: var(--body-font);
   --df-sealed-color: var(--ink);
   --df-sealed-muted: var(--muted);
   --df-sealed-surface: var(--surface);
-  --df-sealed-radius: var(--radius);
+  --df-sealed-radius: var(--radius-small);
 
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   /* Cancels the browser's 8px body margin, which theme CSS can't name (storefront ARCHITECTURE §3.4). */
   margin: -8px;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--body-font);
@@ -56,30 +72,127 @@
   display: block;
 }
 
-/* Top bar: brand, search and tools on charcoal. */
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Top strip: deep burgundy, small links either side and the store's promise in the middle. */
+
+.topbar {
+  background: var(--accent-deep);
+  color: rgb(255 255 255 / 90%);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.topInner {
+  display: flex;
+  box-sizing: border-box;
+  width: min(var(--page-width), 100% - 32px);
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-inline: auto;
+}
+
+.topLinks {
+  display: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.topLink {
+  color: rgb(255 255 255 / 75%);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.topLink:hover {
+  color: #fff;
+}
+
+.topNote {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  color: rgb(255 255 255 / 90%);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.topDot {
+  display: none;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.topSecond {
+  display: none;
+}
+
+.topPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.topIcon {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+/* The white bar: logo, search and tools; it stays on screen while the page scrolls. */
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  border-bottom: 1px solid var(--line);
   background: var(--header-bg);
+  box-shadow: 0 1px 2px rgb(40 35 33 / 4%);
   color: var(--header-ink);
 }
 
 .bar {
-  display: grid;
+  display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px 12px;
-  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 8px;
   margin-inline: auto;
-  padding: 10px 16px;
+  padding: 8px 0 12px;
 }
 
 .brand {
+  display: flex;
   min-width: 0;
+  flex: 1;
+  align-items: center;
   overflow: hidden;
-  color: var(--header-ink);
+  color: var(--accent);
   font-family: var(--heading-font);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: var(--brand-weight);
   line-height: 1.1;
   text-decoration: none;
@@ -91,7 +204,7 @@
   display: block;
   width: auto;
   max-width: 100%;
-  height: 40px;
+  height: 44px;
   object-fit: contain;
   object-position: left center;
 }
@@ -101,15 +214,25 @@
   display: flex;
   min-height: 44px;
   box-sizing: border-box;
+  flex-basis: 100%;
   align-items: center;
-  gap: 12px;
-  grid-column: 1 / -1;
-  order: 1;
-  padding: 4px 4px 4px 18px;
+  gap: 10px;
+  order: 5;
+  margin-top: 8px;
+  padding: 3px 18px 3px 46px;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--bg);
+  background: var(--cream);
   color: var(--muted);
   font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgb(120 27 39 / 10%);
 }
 
 .search label {
@@ -133,43 +256,46 @@
 }
 
 .search input::placeholder {
-  color: var(--muted);
+  color: #8c7d72;
 }
 
-/* Core's button carries its word as text; the word is hidden and a magnifier is drawn in its place. */
+/* Core's button carries its word as text; the word is hidden and a magnifier is drawn in its place, at the field's start. */
 .search button {
-  position: relative;
-  width: 36px;
-  height: 36px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: var(--taupe);
+  background: transparent;
   color: transparent;
   font-size: 0;
   cursor: pointer;
+  transform: translateY(-50%);
 }
 
 .search button::before {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 11px;
-  height: 11px;
+  top: 8px;
+  left: 8px;
+  width: 12px;
+  height: 12px;
   box-sizing: border-box;
-  border: 2px solid var(--taupe-ink);
+  border: 1.8px solid var(--accent);
   border-radius: 50%;
   content: '';
 }
 
 .search button::after {
   position: absolute;
-  top: 22px;
-  left: 20px;
-  width: 6px;
-  height: 2px;
-  background: var(--taupe-ink);
+  top: 19px;
+  left: 18px;
+  width: 5px;
+  height: 1.8px;
+  background: var(--accent);
   content: '';
   transform: rotate(45deg);
   transform-origin: 0 50%;
@@ -184,14 +310,14 @@
   margin: 0;
   padding: 6px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-small);
   background: var(--surface);
-  box-shadow: 0 16px 40px rgb(38 34 31 / 18%);
+  box-shadow: 0 16px 40px rgb(75 16 24 / 16%);
   list-style: none;
 }
 
 .search li {
-  border-radius: 6px;
+  border-radius: 8px;
   color: var(--ink);
   cursor: pointer;
 }
@@ -204,7 +330,7 @@
 .search li:last-child {
   padding: 10px 12px;
   border-top: 1px solid var(--line);
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 8px 8px;
   color: var(--accent);
   font-weight: 600;
 }
@@ -222,15 +348,14 @@
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--soft);
   object-fit: cover;
 }
 
 .search li span {
   flex: 1;
-  font-family: var(--heading-font);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -243,9 +368,9 @@
   margin: 0;
   padding: 14px 16px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-small);
   background: var(--surface);
-  box-shadow: 0 16px 40px rgb(38 34 31 / 18%);
+  box-shadow: 0 16px 40px rgb(75 16 24 / 16%);
   color: var(--muted);
 }
 
@@ -262,50 +387,79 @@
   gap: 4px;
 }
 
-.account,
+.language {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.languageIcon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-width: 1.6;
+}
+
 .tool {
+  position: relative;
   display: inline-flex;
-  min-width: 44px;
-  height: 44px;
+  min-width: 40px;
+  height: 40px;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  border-radius: var(--button-radius);
-  color: var(--header-ink);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.tool:hover {
+  background: var(--header-hover);
+  color: var(--accent);
+}
+
+.wishTool {
+  display: none;
+}
+
+.signIn {
+  display: none;
+  min-height: 40px;
+  box-sizing: border-box;
+  align-items: center;
+  margin-left: 6px;
+  padding: 0 16px;
+  border: 1px solid rgb(120 27 39 / 30%);
+  border-radius: 999px;
+  color: var(--accent);
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-}
-
-.account:hover,
-.tool:hover {
-  background: var(--header-hover);
-}
-
-.accountLabel {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  clip-path: inset(50%);
   white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.divider {
-  display: none;
-  width: 1px;
-  height: 24px;
-  background: rgb(255 255 255 / 25%);
-}
-
-.tool:has(.count) {
-  position: relative;
+.signIn:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
 }
 
 .count {
   position: absolute;
-  top: 2px;
+  top: 0;
   right: 0;
   display: inline-flex;
   min-width: 18px;
@@ -313,11 +467,12 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  padding: 0 4px;
+  border: 2px solid #fff;
   border-radius: 999px;
-  background: var(--taupe);
-  color: var(--taupe-ink);
-  font-size: 11px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1;
 }
@@ -329,65 +484,38 @@
   stroke: currentcolor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.6;
+  stroke-width: 1.7;
 }
 
-.hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-/* Nav bar: off-white, sticky, uppercase links. */
-
-.navBar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  border-bottom: 1px solid rgb(179 165 147 / 30%);
-  background: var(--nav-bg);
-  backdrop-filter: blur(8px);
+/* The menu toggle opens the bar on phones and tablets; its panel opens under the bar. */
+.menuSlot {
+  display: contents;
   color: var(--ink);
-}
-
-.navInner {
-  display: flex;
-  box-sizing: border-box;
-  width: min(100%, 1240px);
-  min-height: 52px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-inline: auto;
-  padding-inline: 16px;
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  padding-block: 8px;
+  margin-top: 10px;
+  padding: 6px 0 4px;
+  border-top: 1px solid var(--line);
 }
 
 .navLink {
   display: flex;
   min-height: 44px;
   align-items: center;
-  padding: 0 12px;
-  border-radius: var(--button-radius);
+  padding: 0 8px;
+  border-radius: 8px;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.06em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .navLink:hover {
+  background: var(--soft);
   color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .navItem {
@@ -404,9 +532,9 @@
   display: flex;
   min-height: 40px;
   align-items: center;
-  padding: 0 12px;
-  border-radius: var(--button-radius);
-  color: var(--ink);
+  padding: 0 8px;
+  border-radius: 8px;
+  color: var(--ink-soft);
   font-size: 14px;
   text-decoration: none;
 }
@@ -420,26 +548,95 @@
   display: none;
 }
 
+.subnavOpen {
+  display: flex;
+}
+
+/* Category strip: a drawn picture over each collection's name, in one centred row that scrolls on small screens. */
+
+.catNav {
+  border-bottom: 1px solid var(--line);
+  background: var(--nav-bg);
+}
+
+.catList {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 8px 8px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.catItem {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.catLink {
+  display: flex;
+  width: 82px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px 8px;
+  color: rgb(40 35 33 / 70%);
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.catLink:hover {
+  color: var(--accent);
+}
+
+.catSvg {
+  width: 52px;
+  height: 52px;
+  transition: transform 0.25s ease;
+}
+
+.catLink:hover .catSvg {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.catName {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.catAll {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .main {
   width: 100%;
   flex: 1;
 }
 
-/* Footer: deep charcoal with taupe headings. */
+/* Footer: deep burgundy under a gold rule, brand column then four lists. */
 
 .footer {
-  padding: 44px 16px 24px;
-  background:
-    linear-gradient(90deg, transparent, var(--taupe), transparent) top / 100% 3px no-repeat,
-    var(--footer-bg);
+  padding: 48px 0 20px;
+  border-top: 3px solid var(--gold);
+  background: var(--footer-bg);
   color: var(--footer-muted);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .columns {
   display: grid;
   box-sizing: border-box;
-  width: min(100%, 1208px);
+  width: min(var(--page-width), 100% - 32px);
   gap: 32px 20px;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-inline: auto;
@@ -449,117 +646,234 @@
   display: flex;
   min-width: 0;
   flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   grid-column: 1 / -1;
 }
 
+.footerLogo {
+  display: block;
+  width: auto;
+  max-width: 180px;
+  height: 64px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 .footerBrand {
-  margin: 0;
   color: var(--footer-ink);
   font-family: var(--heading-font);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: var(--brand-weight);
   line-height: 1.1;
+  text-decoration: none;
   overflow-wrap: anywhere;
 }
 
 .tagline {
-  margin: 0;
-  color: var(--taupe);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  margin: 8px 0 0;
+  color: var(--gold);
+  font-family: var(--heading-font);
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .note {
-  max-width: 36ch;
+  max-width: 34ch;
   margin: 0;
-  overflow-wrap: anywhere;
-}
-
-.contact {
-  margin: 0 0 10px;
+  color: var(--footer-ink);
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
 .social {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin-top: 8px;
 }
 
 .socialLink {
   display: inline-flex;
-  min-height: 36px;
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
   align-items: center;
-  padding: 0 14px;
-  border: 1px solid var(--taupe);
+  justify-content: center;
+  border: 1px solid rgb(213 166 66 / 45%);
   border-radius: 999px;
-  color: var(--taupe);
-  font-size: 13px;
+  color: var(--gold);
   text-decoration: none;
-  text-transform: capitalize;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .socialLink:hover {
-  background: var(--taupe);
-  color: var(--taupe-ink);
+  background: var(--gold);
+  color: var(--gold-ink);
+}
+
+.socialIcon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
 }
 
 .links {
   display: flex;
   min-width: 0;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .heading {
-  margin: 0 0 12px;
-  color: var(--taupe);
+  margin: 0 0 14px;
+  color: var(--footer-ink);
   font-family: var(--heading-font);
-  font-size: 19px;
-  font-weight: var(--heading-weight);
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .footerLink {
-  display: flex;
-  min-height: 34px;
+  display: inline-flex;
+  min-height: 25px;
   align-items: center;
-  color: var(--footer-muted);
+  color: var(--footer-ink);
   text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footerLink:hover {
-  color: var(--taupe);
+  color: var(--gold);
+  transform: translateX(3px);
+}
+
+.contact {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 12px;
+  color: var(--footer-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+/* The email and WhatsApp lines are links; the address is not. */
+.contactLink:hover {
+  color: var(--gold);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.addressName {
+  font-weight: 700;
+}
+
+.taxId {
+  margin: 0;
+  color: var(--footer-muted);
+  font-size: 12px;
+}
+
+.contactIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.perks {
+  display: grid;
+  box-sizing: border-box;
+  width: min(var(--page-width), 100% - 32px);
+  gap: 12px 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin: 40px auto 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--footer-line);
+  border-bottom: 1px solid var(--footer-line);
+  list-style: none;
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--footer-ink);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.perk .contactIcon {
+  margin-top: 0;
 }
 
 .base {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1208px);
+  width: min(var(--page-width), 100% - 32px);
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 32px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid var(--footer-line);
+  margin: 0 auto;
+  padding-top: 16px;
   color: var(--footer-muted);
   font-size: 12px;
 }
 
-.cookies {
-  display: block;
-  --df-sealed-color: var(--footer-ink);
+.poweredGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cookies::part(button) {
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid var(--footer-line);
-  border-radius: var(--button-radius);
-  background: transparent;
-  color: var(--footer-ink);
+.poweredLabel {
+  color: var(--footer-muted);
+}
+
+.poweredLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #fff;
+  color: #0b4ea2;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.poweredLink:focus-visible {
+  outline: 2px solid var(--footer-ink);
+  outline-offset: 2px;
+}
+
+.poweredLogo {
+  display: block;
+  width: 106px;
+  height: auto;
+}
+
+.poweredName {
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .powered {
@@ -576,50 +890,6 @@
   margin-right: auto;
 }
 
-/* Phones: the menu's top-level items as a sideways strip of chips beside the menu button. */
-.chips {
-  display: flex;
-  min-width: 0;
-  flex: 1;
-  gap: 6px;
-  margin: 0;
-  padding: 6px 4px;
-  list-style: none;
-  order: 2;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-}
-
-.chips li {
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
-
-.chip {
-  display: inline-flex;
-  height: 32px;
-  box-sizing: border-box;
-  align-items: center;
-  padding: 0 12px;
-  border: 1px solid rgb(179 165 147 / 40%);
-  border-radius: 999px;
-  background: rgb(250 249 247 / 60%);
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.chip:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .whatsapp {
   position: fixed;
   z-index: 30;
@@ -631,38 +901,30 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow:
-    0 0 0 8px rgb(38 34 31 / 15%),
-    0 8px 24px rgb(0 0 0 / 20%);
+  background: #25d366;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 22%);
   color: #fff;
   transition: transform 0.3s ease;
 }
 
 .whatsapp:hover {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .whatsappIcon {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   fill: currentcolor;
 }
 
-.chip:focus-visible,
-.whatsapp:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-}
-
+.whatsapp:focus-visible,
 .brand:focus-visible,
 .search:focus-within,
-.account:focus-visible,
-.tool:focus-visible {
-  outline: 2px solid var(--header-ink);
-  outline-offset: 2px;
-}
-
+.tool:focus-visible,
+.signIn:focus-visible,
+.topLink:focus-visible,
+.topPhone:focus-visible,
+.catLink:focus-visible,
 .navLink:focus-visible,
 .subLink:focus-visible {
   outline: 2px solid var(--focus);
@@ -670,116 +932,149 @@
 }
 
 .footerLink:focus-visible,
+.footerBrand:focus-visible,
+.contact:focus-visible,
 .socialLink:focus-visible {
-  outline: 2px solid var(--taupe);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
-@media (min-width: 900px) {
-  .bar {
-    min-height: 72px;
-    gap: 24px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 560px) minmax(0, 1fr);
-    padding: 12px 32px;
+@media (prefers-reduced-motion: reduce) {
+  .catSvg,
+  .footerLink,
+  .whatsapp {
+    transition: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .shell {
+    --page-width: 608px;
   }
 
-  .brand {
-    font-size: 28px;
+  .perks {
+    grid-template-columns: repeat(4, minmax(0, auto));
+    justify-content: space-between;
   }
 
-  .search {
-    grid-column: auto;
-    order: 0;
+  .catLink {
+    width: 96px;
+    font-size: 12px;
   }
 
-  .tools {
+  .catSvg {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (min-width: 768px) {
+  .shell {
+    --page-width: 736px;
+  }
+
+  .topLinks {
+    display: flex;
+    flex: 1;
+  }
+
+  .topEnd {
     justify-content: flex-end;
   }
 
-  .account {
-    padding: 0 10px;
+  .topInner {
+    justify-content: space-between;
   }
 
-  .accountLabel {
-    position: static;
-    width: auto;
-    height: auto;
-    clip-path: none;
+  .topDot {
+    display: inline-block;
   }
 
-  .divider {
-    display: block;
-  }
-
-  .navInner {
-    justify-content: center;
-    padding-inline: 32px;
-  }
-
-  .chips {
-    display: none;
-  }
-
-  .nav {
-    flex-direction: row;
-    gap: 4px;
-    padding-block: 0;
-  }
-
-  .subnav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 20;
-    display: none;
-    min-width: 200px;
-    padding: 8px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-    box-shadow: 0 8px 24px rgb(42 39 37 / 12%);
-  }
-
-  .navItem {
-    display: flex;
-    align-items: center;
-  }
-
-  .navItem .navLink {
-    padding-right: 2px;
-  }
-
-  .subToggle {
-    display: flex;
-    width: 24px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--ink);
-    cursor: pointer;
-  }
-
-  .subToggle .icon {
-    width: 14px;
-    height: 14px;
-  }
-
-  .subnavOpen {
-    display: flex;
-  }
-
-  .footer {
-    padding: 56px 32px 24px;
+  .topSecond {
+    display: inline;
   }
 
   .columns {
-    grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    --page-width: 992px;
+  }
+
+  .bar {
+    min-height: 76px;
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .brand {
+    flex: 1 1 0;
+  }
+
+  .logo {
+    height: 52px;
+  }
+
+  .search {
+    max-width: 576px;
+    flex: 0 1 576px;
+    order: 0;
+    margin-top: 0;
+  }
+
+  .tools {
+    flex: 1 1 0;
+    justify-content: flex-end;
+  }
+
+  .language,
+  .wishTool,
+  .signIn {
+    display: inline-flex;
+  }
+
+  .catList {
+    justify-content: center;
+    padding: 24px 16px 0;
+  }
+
+  .catLink {
+    width: 104px;
+    gap: 6px;
+    padding: 4px 4px 22px;
+  }
+
+  .catSvg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .footer {
+    padding: 56px 0 20px;
+  }
+
+  .columns {
+    grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr));
+    gap: 32px 40px;
   }
 
   .about {
     grid-column: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .shell {
+    --page-width: 1248px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .shell {
+    --page-width: 1504px;
   }
 }

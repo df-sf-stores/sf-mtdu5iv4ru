@@ -1,109 +1,68 @@
-import type { ReactNode } from 'react'
-import { Image, Link, useCollections, useStorefront } from '@dripfunnel/storefront-core/theme'
+import { Link, useStorefront } from '@dripfunnel/storefront-core/theme'
+import { Band, Closing, CompanyHero, Eyebrow, Facts, Heading, NextPage, Range, Split, Values, companyStyles as styles, listOf, usePictured } from '../components/Company'
 import { Layout } from '../components/Layout'
-import { Ornament } from '../components/Ornament'
-import { cx } from '../components/cx'
-import art from '../styles/art.module.css'
-import home from '../styles/home.module.css'
-import styles from '../styles/about.module.css'
-
-const Value = ({ title, body, children }: { title: string; body: string; children: ReactNode }) => (
-  <li className={styles.value}>
-    <span className={styles.valueIcon} aria-hidden="true">
-      <svg viewBox="0 0 24 24" focusable="false">
-        {children}
-      </svg>
-    </span>
-    <h3 className={styles.valueTitle}>{title}</h3>
-    <p className={styles.valueBody}>{body}</p>
-  </li>
-)
 
 export const AboutPage = () => {
   const { store, t } = useStorefront()
-  const { collections } = useCollections({ first: 20 })
-  const storyImage = collections[0]?.image ?? null
-  const detailImage = collections[1]?.image ?? null
-  const address = store.address ? [store.address.street, store.address.city, store.address.region, store.address.postal].filter(Boolean).join(', ') : ''
-  const whatsapp = store.social.find((s) => s.network === 'whatsapp')
-  const visit = address || store.contactPhone || store.contactEmail
+  const { pictured, count, ready } = usePictured()
   return (
     <Layout>
-      <section className={styles.hero}>
-        <p className={styles.heroEyebrow}>{t('pages.about.eyebrow')}</p>
-        <h1 className={styles.heroTitle}>{t('pages.about.title', { store: store.name })}</h1>
-        <Ornament className={styles.heroOrnament} />
-        <p className={styles.heroLead}>{t('pages.about.lead', { store: store.name })}</p>
-      </section>
-      <div className={home.templeBorder} />
-      <section className={styles.story}>
-        <div className={styles.storyPictures}>
-          <div className={cx(styles.arch, art.art, art.stone)}>
-            {storyImage ? <Image image={storyImage} alt="" ratio={0.8} sizes="(min-width: 900px) 448px, 100vw" className={home.cover} /> : null}
-          </div>
-          <div className={cx(styles.detail, art.art, art.sand)}>
-            {detailImage ? <Image image={detailImage} alt="" ratio={1} sizes="144px" className={home.cover} /> : null}
-          </div>
-        </div>
-        <div className={styles.storyCopy}>
-          <p className={styles.eyebrow}>{t('pages.about.story.eyebrow')}</p>
-          <h2 className={styles.heading}>
-            {t('pages.about.story.title')} <em className={styles.accent}>{t('pages.about.story.accent')}</em>
+      <CompanyHero
+        eyebrow={t('pages.about.eyebrow', { store: store.name })}
+        title={t('pages.about.title')}
+        lead={t('pages.about.lead', { store: store.name })}
+        chips={listOf(t('pages.about.chips'))}
+        action={{ href: '/our-story/', label: t('pages.about.action') }}
+        caption={t('pages.about.caption')}
+        product={pictured[0]}
+      />
+      <Band>
+        <Split products={pictured}>
+          <Eyebrow>{t('pages.about.company.eyebrow')}</Eyebrow>
+          <h2 className={styles.title}>
+            {t('pages.about.company.title')}
           </h2>
-          <p className={styles.lead}>{t('pages.about.story.first', { store: store.name })}</p>
-          <p className={styles.body}>{t('pages.about.story.second')}</p>
+          <p className={styles.text}>{t('pages.about.company.first', { store: store.name })}</p>
+          <p className={styles.textMuted}>{t('pages.about.company.second')}</p>
+          <Facts
+            items={[
+              {
+                label: t('pages.about.company.hq'),
+                value: t('pages.about.company.hqValue'),
+                icon: (
+                  <>
+                    <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z" />
+                    <circle cx="12" cy="10" r="2.3" />
+                  </>
+                ),
+              },
+              { label: t('pages.about.company.work'), value: t('pages.about.company.workValue'), icon: <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" /> },
+              { label: t('pages.about.company.markets'), value: t('pages.about.company.marketsValue'), icon: <path d="M4 10h16M5 10l1-5h12l1 5M5 10v10h14V10M9 20v-5h6v5" /> },
+              ...(ready && count ? [{ label: t('pages.about.company.online'), value: t('pages.about.company.onlineValue', { count }), icon: <path d="M5 8h14l-1 12H6zM9 8V6.5a3 3 0 016 0V8" /> }] : []),
+            ]}
+          />
+        </Split>
+      </Band>
+      <Band tone="cream">
+        <Heading eyebrow={t('pages.company.rangeEyebrow')} title={t('pages.company.rangeTitle')} lead={t('pages.company.rangeLead')} centered />
+        <Range text={t('pages.company.range')} products={pictured} />
+        <div className={styles.center}>
+          <Link href="/collections/all/" className={styles.outlineButton}>
+            {t('pages.company.explore')}
+          </Link>
         </div>
-      </section>
-      <section className={styles.promise}>
-        <div className={styles.promiseHead}>
-          <p className={styles.eyebrow}>{t('pages.about.promise.eyebrow')}</p>
-          <h2 className={styles.heading}>{t('pages.about.promise.title')}</h2>
-          <p className={styles.body}>{t('pages.about.promise.body')}</p>
-        </div>
-        <ul className={styles.values}>
-          <Value title={t('pages.about.promise.designs.title')} body={t('pages.about.promise.designs.body')}>
-            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 3v4M21 5h-4M5 17v4M7 19H3" />
-          </Value>
-          <Value title={t('pages.about.promise.quality.title')} body={t('pages.about.promise.quality.body')}>
-            <path d="M6 3h12l4 6-10 12L2 9zM2 9h20M12 21L8 9l4-6 4 6z" />
-          </Value>
-          <Value title={t('pages.about.promise.service.title')} body={t('pages.about.promise.service.body')}>
-            <path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10zM8.5 11.5l2 2 3.5-3.5" />
-          </Value>
-        </ul>
-      </section>
-      {visit ? (
-        <section className={styles.visit}>
-          <div className={styles.visitCard}>
-            <div className={styles.visitPanel}>
-              <span className={styles.visitIcon} aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M4 10h16M5 10l1-5h12l1 5M5 10v10h14V10M9 20v-5h6v5" />
-                </svg>
-              </span>
-              <h2 className={styles.visitTitle}>{t('pages.about.visit.title')}</h2>
-              <p className={styles.visitLead}>{t('pages.about.visit.lead')}</p>
-            </div>
-            <div className={styles.visitDetails}>
-              <p className={styles.visitName}>{store.name}</p>
-              {address ? <p className={styles.visitAddress}>{address}</p> : null}
-              <ul className={styles.contacts}>
-                {store.contactPhone ? <li className={styles.contact}>{store.contactPhone}</li> : null}
-                {store.contactEmail ? <li className={styles.contact}>{store.contactEmail}</li> : null}
-              </ul>
-              {whatsapp ? (
-                <Link href={whatsapp.url} className={styles.visitButton}>
-                  {t('pages.about.visit.whatsapp')}
-                </Link>
-              ) : null}
-            </div>
-          </div>
-        </section>
-      ) : null}
-      <div className={cx(home.templeBorder, home.templeBorderFlip)} />
-      <section className={styles.closing}>
-        <p className={styles.closingText}>{t('pages.about.closing', { store: store.name })}</p>
-      </section>
+      </Band>
+      <Band>
+        <Heading eyebrow={t('pages.about.commitment.eyebrow')} title={t('pages.about.commitment.title')} lead={t('pages.about.commitment.lead', { store: store.name })} />
+        <Values text={t('pages.about.commitment.values')} />
+      </Band>
+      <Closing
+        title={t('pages.company.closingTitle')}
+        body={t('pages.company.closingBody')}
+        primary={{ href: '/collections/all/', label: t('pages.company.explore') }}
+        secondary={{ href: '/our-story/', label: t('pages.company.readStory') }}
+      />
+      <NextPage title={t('pages.company.guidesTitle')} body={t('pages.company.guidesBody', { store: store.name })} action={{ href: '/vision-mission/', label: t('pages.company.vision') }} />
     </Layout>
   )
 }

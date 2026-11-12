@@ -1,11 +1,11 @@
 .page {
   display: flex;
   box-sizing: border-box;
-  width: min(100%, 1240px);
+  width: min(var(--page-width), 100% - 32px);
   flex-direction: column;
   gap: 16px;
   margin-inline: auto;
-  padding: 20px 16px 8px;
+  padding: 24px 0 48px;
 }
 
 .crumbs {
@@ -266,6 +266,7 @@
 }
 
 .cell {
+  display: flex;
   min-width: 0;
 }
 

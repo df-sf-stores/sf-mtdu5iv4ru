@@ -1,83 +1,174 @@
+/* Home hero: a deep burgundy band, the slide's words on the left and two framed packs on the right. */
+
 .hero {
   position: relative;
   overflow: hidden;
-  background: var(--deep);
+  background:
+    radial-gradient(ellipse 55% 70% at 72% 42%, rgb(132 32 46 / 60%) 0, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, rgb(120 27 39 / 45%) 0, transparent 70%),
+    #4b1018;
+  color: #fff;
   touch-action: pan-y;
 }
 
-/* Slides share one grid cell; position classes slide them in from either side. */
+.inner {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  padding: 40px 0 96px;
+}
+
 .track {
   display: grid;
 }
 
 .slide {
   grid-area: 1 / 1;
-  transition: transform 0.6s ease;
+  transition: opacity 0.7s ease;
 }
 
 .current {
-  transform: translateX(0);
+  opacity: 1;
 }
 
-.before {
-  transform: translateX(-100%);
+/* A slide that has left is hidden at once, so its links leave the tab order; the next one fades in over the band. */
+.away {
+  visibility: hidden;
+  opacity: 0;
 }
 
-.after {
-  transform: translateX(100%);
+.slide .copy,
+.slide .media {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.still {
+.away .copy {
+  transform: translateX(-24px);
+}
+
+.away .media {
+  transform: translateX(24px);
+}
+
+.still,
+.still .copy,
+.still .media {
   transition: none;
 }
 
-.slideLink {
-  display: block;
-  width: 100%;
-  /* The screen's height less the header and menu; the banner fits inside rather than being cropped (art.module.css). */
-  max-height: calc(100svh - 7.5rem);
-  aspect-ratio: 16 / 9;
+.slideGrid {
+  display: grid;
+  align-items: center;
+  gap: 40px;
 }
 
-.slideLink:focus-visible {
-  outline: 2px solid var(--taupe);
-  outline-offset: -4px;
+.copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 32px;
   height: 1px;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  flex-shrink: 0;
+  background: var(--gold);
+  content: '';
 }
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  display: none;
-  width: 44px;
-  height: 44px;
+.title {
+  margin: 0 0 22px;
+  color: #fff;
+  font-family: var(--heading-font);
+  font-size: clamp(40px, 10.6vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.line,
+.lineGold {
+  display: block;
+}
+
+.lineGold {
+  color: var(--gold);
+}
+
+.body {
+  max-width: 448px;
+  margin: 0 0 30px;
+  color: rgb(255 255 255 / 82%);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  min-height: 48px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  border: 1px solid rgb(179 165 147 / 60%);
+  gap: 8px;
+  padding: 0 28px;
   border-radius: 999px;
-  background: rgb(0 0 0 / 25%);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primary {
+  background: var(--gold);
+  box-shadow: 0 12px 28px rgb(213 166 66 / 30%);
+  color: var(--gold-ink);
+}
+
+.primary:hover {
+  background: #e2b552;
+  box-shadow: 0 14px 32px rgb(213 166 66 / 40%);
+  transform: translateY(-1px);
+}
+
+.secondary {
+  border: 1px solid rgb(255 255 255 / 45%);
   color: #fff;
-  cursor: pointer;
-  transform: translateY(-50%);
-  backdrop-filter: blur(4px);
 }
 
-.arrow:hover {
-  background: rgb(0 0 0 / 45%);
+.secondary:hover {
+  border-color: #fff;
+  background: rgb(255 255 255 / 10%);
 }
 
-.arrow svg {
-  width: 20px;
-  height: 20px;
+.buttonIcon {
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentcolor;
   stroke-linecap: round;
@@ -85,116 +176,280 @@
   stroke-width: 2;
 }
 
-.previous {
-  left: 12px;
+/* The packs: a large white frame with a smaller one overlapping its lower left corner and the badge on its edge. */
+
+.media {
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 543 / 606;
+  justify-self: center;
 }
 
-.next {
-  right: 12px;
-}
-
-.dots {
+.frameMain,
+.frameSide {
   position: absolute;
-  bottom: 4px;
-  left: 50%;
-  display: flex;
-  transform: translateX(-50%);
-}
-
-/* A 24px tap target (WCAG 2.2 target size) around the small visible pill. */
-.dot {
-  display: flex;
-  min-width: 24px;
-  height: 24px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.dot::before {
-  width: 12px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 60%);
-  content: '';
-}
-
-.dot:hover::before {
+  box-sizing: border-box;
+  overflow: hidden;
   background: #fff;
 }
 
-.dotOn::before {
-  width: 32px;
-  background: var(--taupe);
+.frameMain {
+  top: 0;
+  right: 0;
+  width: 83.2%;
+  height: 93.4%;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgb(20 2 6 / 35%);
 }
 
-.toggle {
+.frameSide {
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  height: 47.2%;
+  border: 5px solid #fff;
+  border-radius: 20px;
+  background: var(--cream);
+  box-shadow: 0 24px 48px rgb(20 2 6 / 40%);
+}
+
+/* The logo waits behind the photo; the photo hides its alt words, so a file that fails shows only the logo. */
+.packMark {
   position: absolute;
-  bottom: 4px;
-  left: 12px;
+  inset: 0;
   display: flex;
-  width: 32px;
-  height: 32px;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+}
+
+.packLogo {
+  display: block;
+  width: 38%;
+  height: auto;
+  max-height: 40%;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  font-size: 0;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  z-index: 2;
+  top: 13%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgb(20 2 6 / 25%);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badgeLogo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Arrows, dots and the pause button, under the words. */
+
+.controls {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arrow,
+.toggle {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid rgb(179 165 147 / 60%);
-  border-radius: 999px;
-  background: rgb(0 0 0 / 25%);
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 50%;
+  background: transparent;
   color: #fff;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.toggle {
+  width: 32px;
+  border-color: transparent;
+}
+
+.arrow:hover {
+  border-color: #fff;
+  background: rgb(255 255 255 / 12%);
 }
 
 .toggle:hover {
-  background: rgb(0 0 0 / 45%);
+  color: var(--gold);
 }
 
+.arrow svg,
 .toggle svg {
-  width: 14px;
-  height: 14px;
-  fill: currentcolor;
+  width: 16px;
+  height: 16px;
+  fill: none;
   stroke: currentcolor;
+  stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2;
 }
 
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Each dot is a 24px target around a small mark; the chosen slide's mark grows into a gold bar. */
+.dot {
+  position: relative;
+  width: 14px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot::before {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  left: 4px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 35%);
+  content: '';
+  transform: translateY(-50%);
+  transition: background-color 0.4s ease;
+}
+
+.dot:hover::before {
+  background: rgb(255 255 255 / 70%);
+}
+
+.dotOn {
+  width: 40px;
+}
+
+.dotOn::before,
+.dotOn:hover::before {
+  background: var(--gold);
+}
+
 .arrow:focus-visible,
 .toggle:focus-visible,
-.dot:focus-visible {
-  outline: 2px solid var(--taupe);
-  outline-offset: 2px;
-}
-
-@media (min-width: 640px) {
-  .arrow {
-    display: flex;
-  }
-}
-
-@media (min-width: 768px) {
-  .previous {
-    left: 24px;
-  }
-
-  .next {
-    right: 24px;
-  }
-
-  .dots {
-    bottom: 12px;
-  }
-
-  .toggle {
-    bottom: 12px;
-    left: 24px;
-  }
+.dot:focus-visible,
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide {
+  .slide,
+  .slide .copy,
+  .slide .media,
+  .dot,
+  .dot::before {
     transition: none;
   }
+}
+
+@media (min-width: 640px) {
+  .media {
+    width: min(100%, 460px);
+  }
+
+  .body {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    padding: 64px 0 112px;
+  }
+
+  .slideGrid {
+    min-height: 490px;
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 48px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .body {
+    font-size: 17px;
+  }
+
+  .media {
+    width: 440px;
+  }
+
+  .controls {
+    bottom: 41px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slideGrid {
+    min-height: 606px;
+    grid-template-columns: minmax(0, 1fr) 543px;
+    gap: 56px;
+  }
+
+  .title {
+    font-size: 68px;
+  }
+
+  .body {
+    font-size: 18px;
+  }
+
+  .media {
+    width: 543px;
+  }
+}
+
+/* Browsers draw ::before only on an image that failed to load: it covers the small broken-image mark in the corner, and the logo behind stays in view. */
+.photo::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--cream);
+  content: '';
 }
