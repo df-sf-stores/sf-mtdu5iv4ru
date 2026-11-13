@@ -994,43 +994,37 @@
 .poweredGroup {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  line-height: 1;
 }
 
 .poweredLabel {
-  color: var(--footer-muted);
+  color: #f3e6cc;
+  font-size: 12px;
+  letter-spacing: 0.02em;
 }
 
 .poweredLink {
   display: inline-flex;
   align-items: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background: #fff;
-  color: #0b4ea2;
-  font-weight: 700;
+  border-radius: 4px;
   text-decoration: none;
 }
 
 .poweredLink:focus-visible {
   outline: 2px solid var(--footer-ink);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .poweredLogo {
   display: block;
-  width: 106px;
+  width: 92px;
   height: auto;
-}
-
-.poweredName {
-  font-size: 13px;
-  line-height: 18px;
 }
 
 .powered {
   display: block;
-  --df-sealed-muted: var(--footer-muted);
+  --df-sealed-muted: #f3e6cc;
 }
 
 .consent {
@@ -1121,6 +1115,10 @@
 }
 
 @media (min-width: 768px) {
+  .poweredLogo {
+    width: 104px;
+  }
+
   .shell {
     --page-width: 736px;
   }

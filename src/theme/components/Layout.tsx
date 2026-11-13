@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { ConsentBanner, Link, MerchantImage, navigate, PoweredBy, PreviewBanner, SearchField, StoreLogo, useCart, useCollections, useMenu, useStorefront, useWishlist } from '@dripfunnel/storefront-core/theme'
+import { ConsentBanner, Link, navigate, PoweredBy, PreviewBanner, SearchField, StoreLogo, ThemeImage, useCart, useCollections, useMenu, useStorefront, useWishlist } from '@dripfunnel/storefront-core/theme'
 import { CategoryIcon, iconFor } from './CategoryIcon'
 import { useContact } from './contact'
 import { AccountMenu } from './interactive/AccountMenu'
@@ -8,10 +8,7 @@ import { NavItem } from './interactive/NavItem'
 import styles from '../styles/layout.module.css'
 
 // The theme rules allow no URL encoding, so the characters that would break the query are dropped instead.
-// The DripFunnel logo is a Storefront › Assets picture named by its media id in content ("none" until it is uploaded),
-// shown at its file's 845 × 143 ratio; until then the footer writes the name instead.
-const mediaId = /^[A-Za-z0-9_-]{1,128}$/
-const hasLogo = (id: string) => id !== 'none' && mediaId.test(id)
+// The footer's DripFunnel logo: the original brand file in its own colours, transparent, at its 845 × 143 ratio.
 const poweredLogoRatio = 845 / 143
 
 const searchFor = (words: string) => navigate(`/search/?q=${words.replace(/[&+%#]/g, ' ').trim()}`)
@@ -53,7 +50,6 @@ const SocialGlyph = ({ network }: { network: string }) => {
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const { store, t, mode, poweredBy } = useStorefront()
-  const poweredLogo = t('common.footer.poweredLogo')
   const menu = useMenu()
   // `first: 20` matches the home page's request, so both share one answer.
   const { collections: fetched, status } = useCollections({ first: 20 })
@@ -333,11 +329,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           <div className={styles.poweredGroup}>
             {poweredBy ? <PoweredBy brand={poweredBy} t={t} className={styles.powered} /> : <span className={styles.poweredLabel}>{t('common.footer.poweredBy')}</span>}
             <Link href={t('common.footer.poweredUrl')} className={styles.poweredLink}>
-              {hasLogo(poweredLogo) ? (
-                <MerchantImage asset={poweredLogo} alt={t('common.footer.poweredAlt')} ratio={poweredLogoRatio} sizes="120px" className={styles.poweredLogo} />
-              ) : (
-                <span className={styles.poweredName}>{t('common.footer.poweredAlt')}</span>
-              )}
+              <ThemeImage src="dripfunnel-logo.png" alt={t('common.footer.poweredAlt')} ratio={poweredLogoRatio} sizes="120px" className={styles.poweredLogo} />
             </Link>
           </div>
         </div>
