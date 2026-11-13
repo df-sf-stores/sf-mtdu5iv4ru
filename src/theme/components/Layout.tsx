@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { ConsentBanner, Link, navigate,  PreviewBanner, SearchField, StoreLogo, ThemeImage, useCart, useCollections, useMenu, useStorefront, useWishlist } from '@dripfunnel/storefront-core/theme'
+import { ConsentBanner, Link, navigate, PoweredBy, PreviewBanner, SearchField, StoreLogo, ThemeImage, useCart, useCollections, useMenu, useStorefront, useWishlist } from '@dripfunnel/storefront-core/theme'
 import { CategoryIcon, iconFor } from './CategoryIcon'
 import { useContact } from './contact'
 import { AccountMenu } from './interactive/AccountMenu'
@@ -49,7 +49,7 @@ const SocialGlyph = ({ network }: { network: string }) => {
 }
 
 export const Layout = ({ children }: { children: ReactNode }) => {
-  const { store, t, mode } = useStorefront()
+  const { store, t, mode, poweredBy } = useStorefront()
   const menu = useMenu()
   // `first: 20` matches the home page's request, so both share one answer.
   const { collections: fetched, status } = useCollections({ first: 20 })
@@ -324,32 +324,15 @@ export const Layout = ({ children }: { children: ReactNode }) => {
             {t('common.footer.perks.support')}
           </li>
         </ul>
-        
-<div className={styles.base}>
-  <p className={styles.copyright}>
-    {t('common.footer.rights', { store: contact.legalName })}
-  </p>
-
-  <div className={styles.poweredGroup}>
-    <span className={styles.poweredLabel}>
-      {t('common.footer.poweredBy')}
-    </span>
-
-    <Link
-      href={t('common.footer.poweredUrl')}
-      className={styles.poweredLink}
-    >
-      <ThemeImage
-        src="dripfunnel-logo.png"
-        alt="DripFunnel"
-        ratio={poweredLogoRatio}
-        sizes="120px"
-        className={styles.poweredLogo}
-      />
-    </Link>
-  </div>
-</div>
-
+        <div className={styles.base}>
+          <p className={styles.copyright}>{t('common.footer.rights', { store: contact.legalName })}</p>
+          <div className={styles.poweredGroup}>
+            {poweredBy ? <PoweredBy brand={poweredBy} t={t} className={styles.powered} /> : <span className={styles.poweredLabel}>{t('common.footer.poweredBy')}</span>}
+            <Link href={t('common.footer.poweredUrl')} className={styles.poweredLink}>
+              <ThemeImage src="dripfunnel-logo.png" alt={t('common.footer.poweredAlt')} ratio={poweredLogoRatio} sizes="120px" className={styles.poweredLogo} />
+            </Link>
+          </div>
+        </div>
       </footer>
       {contact.phone ? (
         <Link href={contact.chat} className={styles.whatsapp}>
